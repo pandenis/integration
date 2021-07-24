@@ -1,11 +1,12 @@
 /// <reference types="cypress-xpath" />
 
-let introXpath = '//*[contains(@class, \'jss20\')]'
-let instructionXpath1 = '//*[contains(@class, \'jss30 jss28\')]'
-let instructionXpath2 = '//*[contains(@class, \'jss31 jss28\')]'
+import {xpaths} from './LandingPageVars';
+xpaths.introXpath
+ 
 
 
 describe('Verify landing page.', () => {
+
     it('URL is include', () => {
       cy.visit('https://qa-test.d1cl3ctepbvcvq.amplifyapp.com')
       cy.url().should('include', 'qa-test.d1cl3ctepbvcvq');
@@ -14,15 +15,15 @@ describe('Verify landing page.', () => {
 
     it('Page includes greeting text (by class)', () => {
 
-       cy.xpath(introXpath).
+       cy.xpath(xpaths.introXpath).
        contains('How can we introduce you?')
      })
 
      it('Page includes instruction text (by class)', () => {
   
-       cy.xpath(instructionXpath1).
+       cy.xpath(xpaths.instructionXpath1).
        contains('Please let us know your first and last name, so we could')
-       cy.xpath(instructionXpath2).
+       cy.xpath(xpaths.instructionXpath2).
        contains('introduce you to your doctor.')
      })
 
